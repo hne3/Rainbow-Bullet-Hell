@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullet Hell", "Bullet Hell.csproj", "{78BB26E4-AB33-1439-4CDC-15A43667D9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullet Hell.Editor", "Bullet Hell.Editor.csproj", "{421C06A9-D80A-1DB9-550B-390161A9C468}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78BB26E4-AB33-1439-4CDC-15A43667D9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BB26E4-AB33-1439-4CDC-15A43667D9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BB26E4-AB33-1439-4CDC-15A43667D9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BB26E4-AB33-1439-4CDC-15A43667D9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{421C06A9-D80A-1DB9-550B-390161A9C468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421C06A9-D80A-1DB9-550B-390161A9C468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421C06A9-D80A-1DB9-550B-390161A9C468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421C06A9-D80A-1DB9-550B-390161A9C468}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
