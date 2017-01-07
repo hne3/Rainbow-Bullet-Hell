@@ -4,33 +4,25 @@ public class FistOfFury : MonoBehaviour {
 
     public float Speed = 1.0f;
 
+    public float Distance = 5.0f;
+
     public ForceField ForceFieldPrefab;
 
     public GameObject Enemy;
 
     private ForceField currentForceField;
 
+    private Vector3 pos;
+
+    private void Start()
+    {
+        pos = new Vector3(0, 0, Distance);
+    }
+    
 	private void Update ()
     {
-        Vector3 pos = transform.position;
-
-        if(Input.GetKey(KeyCode.W))
-        {
-            pos.y += Time.deltaTime * Speed;
-        }
-        else if(Input.GetKey(KeyCode.S))
-        {
-            pos.y -= Time.deltaTime * Speed;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            pos.x += Time.deltaTime * Speed;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            pos.x -= Time.deltaTime * Speed;
-        }
+        pos.x = Input.mousePosition.x;
+        pos.y = Input.mousePosition.y;
 
         if (Input.GetKey(KeyCode.E))
         {
@@ -41,7 +33,7 @@ public class FistOfFury : MonoBehaviour {
             pos.z -= Time.deltaTime * Speed;
         }
 
-        transform.position = pos;
+        transform.position = Camera.main.ScreenToWorldPoint(pos);
 
         float step = Speed * Time.deltaTime;
         Vector3 lookDir = Enemy.transform.position - transform.position;

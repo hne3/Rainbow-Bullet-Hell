@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013429139830}
   - 33: {fileID: 33000010572256680}
-  - 136: {fileID: 136000011530764074}
   - 108: {fileID: 108000011210711442}
   - 114: {fileID: 114000012168978038}
   - 114: {fileID: 114000011537823600}
   - 54: {fileID: 54000011695601462}
+  - 135: {fileID: 135000012037774066}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013746928788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65, y: 0, z: 0.19}
+  m_LocalPosition: {x: -23.75651, y: 7.2875714, z: -121.011055}
   m_LocalScale: {x: 0.1, y: 0.05, z: 0.1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 3
-  startColor: {r: 1, g: 0, b: 0, a: 0}
-  endColor: {r: 1, g: 0, b: 0.8068962, a: 0}
---- !u!136 &136000011530764074
-CapsuleCollider:
+  startColor: {r: 0.11724138, g: 0, b: 1, a: 0}
+  endColor: {r: 1, g: 0, b: 0, a: 0}
+--- !u!135 &135000012037774066
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -136,7 +136,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}

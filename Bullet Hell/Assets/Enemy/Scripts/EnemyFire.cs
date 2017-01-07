@@ -2,15 +2,11 @@
 
 public class EnemyFire : MonoBehaviour {
     
-    public GameObject Shot;
     public Transform BulletSpawn;
     public BulletPool bulletPool;
-    public SteamVR_PlayArea PlayArea;
+    public float fireRate;
 
-    [SerializeField]
-    private float fireRate;
-
-    private float nextFire;
+    private float nextFire = 0.0f;
 
     private void Update()
     {

@@ -93,10 +93,10 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 44b0004ffb25526448f8f90331133690, type: 2}
   NumCentersAllowed: 30
   ForceFieldGrowthRate: 4
-  TimeBetweenHitRadiiChange: 0.01
-  DefaultRadius: 1
+  TimeBetweenHitRadiiChange: 0.001
+  DefaultRadius: 0.8
   DefaultPos: {x: 1000, y: 1000, z: 1000}
-  FieldScale: {x: 30, y: 30, z: 30}
+  FieldScale: {x: 10, y: 10, z: 10}
 --- !u!135 &135000013542583324
 SphereCollider:
   m_ObjectHideFlags: 1
