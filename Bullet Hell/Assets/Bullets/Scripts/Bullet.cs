@@ -1,44 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 1.0f; // Speed of bullet
+    public ParticleSystem Explosion;
 
-    private float explosionRadius = 5.0f; // Area of bullets affected
+    public float Speed = 1f; // Speed of bullet
 
-    private int recursionMax = 200; // Max bullets you can eliminate with one punch
+    private WaitForSeconds waitTime;
+
+    private void Start()
+    {
+        waitTime = new WaitForSeconds(Explosion.startLifetime);
+    }
     
 	private void OnEnable ()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+        GetComponent<Rigidbody>().velocity = transform.forward * Speed;
     }
 
     private void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.tag == "Punch")
-        {
-            Explode();
-        }
-        else if(c.gameObject.tag == "Wall")
+        if(c.gameObject.tag == "Wall")
         {
             gameObject.SetActive(false);
         }
+        else
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), c.collider);
+        }
     }
 
-    private void Explode()
+    public IEnumerator Explode()
     {
-        // Explode all other bullets within radius
-        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach(Collider c in hits)
-        {
-            Bullet b = c.gameObject.GetComponentInParent<Bullet>();
-            if (b)
-            {
-                b.gameObject.SetActive(false);
-            }
-        }
-        // Explosion effect
+        Explosion.Play();
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().rotation = Quaternion.identity;
+        yield return waitTime;
         gameObject.SetActive(false);
+        yield break;
     }
 }

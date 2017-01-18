@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class BulletPool : MonoBehaviour {
 
     public bool WillGrow = false;
+
+    public float Lifetime = 1.0f;
 
     [SerializeField]
     private int NumToPool = 100;
@@ -15,6 +18,8 @@ public class BulletPool : MonoBehaviour {
 
     private int curIndex = 0;
 
+    private WaitForSeconds lifetime;
+
 	private void Start ()
     {
         bullets = new List<Bullet>(NumToPool);
@@ -24,6 +29,7 @@ public class BulletPool : MonoBehaviour {
             b.gameObject.SetActive(false);
             bullets.Add(b);
         }
+        lifetime = new WaitForSeconds(Lifetime);
     }
 	
 	public Bullet GetBullet ()
@@ -33,6 +39,7 @@ public class BulletPool : MonoBehaviour {
             if(!bullets[i].gameObject.activeInHierarchy)
             {
                 curIndex = i;
+                StartCoroutine(TimeExpiration(bullets[i]));
                 return bullets[i];
             }
         }
@@ -41,8 +48,16 @@ public class BulletPool : MonoBehaviour {
             Bullet b = (Bullet)Instantiate(BulletPrefab, transform, false);
             b.gameObject.SetActive(false);
             bullets.Add(b);
+            StartCoroutine(TimeExpiration(b));
             return b;
         }
         return null;
 	}
+
+    private IEnumerator TimeExpiration(Bullet b)
+    {
+        yield return lifetime;
+        b.gameObject.SetActive(false);
+        yield break;
+    }
 }

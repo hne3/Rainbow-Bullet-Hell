@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WillGrow: 0
+  Lifetime: 1
   NumToPool: 200
   BulletPrefab: {fileID: 114000011537823600, guid: 0699962055b01d74d9dc9246c1ba62a4,
     type: 2}

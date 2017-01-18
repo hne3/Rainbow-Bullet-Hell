@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FistOfFury : MonoBehaviour {
 
     public float Speed = 1.0f;
 
     public float Distance = 5.0f;
+
+    public float PunchRadius = 1.0f;
+
+    public float TimeBetweenExplosions = 0.4f;
 
     public ForceField ForceFieldPrefab;
 
@@ -14,9 +19,14 @@ public class FistOfFury : MonoBehaviour {
 
     private Vector3 pos;
 
+    private WaitForSeconds ExplosionWait;
+
+
     private void Start()
     {
         pos = new Vector3(0, 0, Distance);
+
+        ExplosionWait = new WaitForSeconds(TimeBetweenExplosions);
     }
     
 	private void Update ()
@@ -33,6 +43,11 @@ public class FistOfFury : MonoBehaviour {
             pos.z -= Time.deltaTime * Speed;
         }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine("Punch");
+        }
+
         transform.position = Camera.main.ScreenToWorldPoint(pos);
 
         float step = Speed * Time.deltaTime;
@@ -47,5 +62,19 @@ public class FistOfFury : MonoBehaviour {
         {
             Destroy(currentForceField.gameObject);
         }
+    }
+
+    private IEnumerator Punch()
+    {
+        Collider[] col = Physics.OverlapSphere(transform.position, PunchRadius);
+        foreach (Collider c in col)
+        {
+            Bullet b = c.GetComponent<Bullet>();
+            if (b && b.isActiveAndEnabled)
+            {
+                b.StartCoroutine("Explode");
+            }
+        }
+        yield break;
     }
 }
